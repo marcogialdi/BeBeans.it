@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La nostra filosofia · BeBeans</title>
+<meta name="description" content="BeBeans non serve a far fare più faccende ai ragazzi: serve a far crescere responsabilità, cooperazione e capacità di gestire ciò che si guadagna.">
+<meta property="og:title" content="La filosofia di BeBeans">
+<meta property="og:description" content="Il gioco è solo il mezzo: responsabilità, cooperazione e gestione dei guadagni.">
+<meta property="og:url" content="https://bebeans.it/filosofia.html">
+<meta property="og:locale" content="it_IT">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M20 8c12-6 30 2 32 18 2 14-8 30-24 30S6 46 8 32c1-8 8-9 12-16 2-3 0-6 0-8z' fill='%233BB273'/%3E%3Cpath d='M38 20l2.6 5.4 5.9.8-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z' fill='%23FFC83D'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --notte:#1B1F4B; --notte-2:#2A2F6B; --stella:#FFC83D; --fagiolo:#3BB273;
+    --scuola:#3A8DDE; --personali:#8E6CEF; --fondo:#F6F5FB; --carta:#FFFFFF;
+    --grigio:#5D6285; --bordo:#E3E1F0;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--fondo);color:var(--notte);font:400 17px/1.65 Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  svg{display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:Fredoka,Figtree,sans-serif;line-height:1.12;margin:0;letter-spacing:-.01em}
+  h1{font-size:clamp(2.3rem,6vw,3.8rem);font-weight:700}
+  h2{font-size:clamp(1.6rem,3.6vw,2.2rem);font-weight:600}
+  p{margin:0}
+  :focus-visible{outline:3px solid var(--scuola);outline-offset:3px;border-radius:6px}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+  @media(min-width:720px){.wrap{padding:0 32px}}
+
+  .barra{position:sticky;top:0;z-index:20;background:rgba(246,245,251,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--bordo)}
+  .barra .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 1.5rem Fredoka,sans-serif}
+  .logo svg{width:34px;height:34px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 18px;border-radius:999px;font:600 .95rem Figtree,sans-serif;text-decoration:none;background:var(--stella);color:var(--notte);box-shadow:0 3px 0 #D9A21A}
+  .btn:hover{background:#FFD45F}
+
+  .apertura{padding:64px 0 40px}
+  .apertura p{font-size:1.25rem;color:var(--grigio);margin-top:22px;max-width:58ch}
+  .apertura .mezzo{margin-top:28px;font:600 1.3rem Fredoka,sans-serif;color:var(--notte);max-width:52ch}
+
+  .indice{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 56px;padding:0;list-style:none}
+  .indice a{display:block;padding:8px 16px;border-radius:999px;background:var(--carta);border:1px solid var(--bordo);text-decoration:none;font-weight:500;font-size:.95rem}
+  .indice a:hover{border-color:var(--notte)}
+
+  .tre{display:grid;gap:16px;margin-bottom:72px}
+  @media(min-width:860px){.tre{grid-template-columns:repeat(3,1fr)}}
+  .tre div{background:var(--carta);border:1px solid var(--bordo);border-top:6px solid var(--tono);border-radius:24px;padding:24px}
+  .tre h3{font-size:1.25rem}
+  .tre dl{margin:14px 0 0}
+  .tre dt{font-size:.85rem;font-weight:600;color:var(--grigio);margin-top:12px}
+  .tre dd{margin:2px 0 0}
+
+  article{max-width:720px}
+  .capitolo{scroll-margin-top:84px;padding:48px 0;border-top:1px solid var(--bordo)}
+  .capitolo h2{display:flex;align-items:center;gap:14px}
+  .capitolo h2::before{content:"";width:14px;height:14px;border-radius:4px;background:var(--tono);flex:none}
+  .capitolo > p{margin-top:16px;color:var(--grigio);font-size:1.08rem}
+  .punti{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:18px}
+  .punti li{padding-left:20px;border-left:3px solid var(--tono)}
+  .punti strong{display:block;font-family:Fredoka,sans-serif;font-weight:600;font-size:1.12rem;margin-bottom:2px}
+  .punti span{color:var(--grigio)}
+  .chiusa{margin-top:24px;font:600 1.15rem Fredoka,sans-serif}
+
+  .invito{margin:24px 0 72px;background:var(--notte);color:#fff;border-radius:32px;padding:44px 28px}
+  .invito h2{color:#fff}
+  .invito p{color:#C5C8EE;margin:12px 0 24px;max-width:52ch}
+
+  footer{padding:0 0 48px;color:var(--grigio);font-size:.92rem}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between;align-items:center}
+  footer nav{display:flex;gap:20px;flex-wrap:wrap}
+
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-fagiolo" viewBox="0 0 64 64"><path d="M20 8c12-6 30 2 32 18 2 14-8 30-24 30S6 46 8 32c1-8 8-9 12-16 2-3 0-6 0-8z" fill="#3BB273"/><path d="M38 20l2.6 5.4 5.9.8-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z" fill="#FFC83D"/></symbol>
+</svg>
+
+<header class="barra">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="BeBeans, torna alla home"><svg><use href="#i-fagiolo"/></svg>BeBeans</a>
+    <a class="btn" href="index.html#accesso">Voglio provarla</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="apertura">
+    <h1>Perché un gioco</h1>
+    <p>BeBeans non serve a far fare più faccende ai ragazzi. Serve a far crescere tre abilità che resteranno loro per sempre: la responsabilità, la cooperazione e la capacità di gestire ciò che si guadagna.</p>
+    <p class="mezzo">Il gioco è solo il mezzo. Stelle, serie e premi rendono visibile una cosa che di solito resta astratta: ogni impegno mantenuto ha un valore, e quel valore si può spendere, condividere o mettere da parte.</p>
+  </section>
+
+  <nav aria-label="Capitoli">
+    <ul class="indice">
+      <li><a href="#responsabilita">Responsabilità</a></li>
+      <li><a href="#cooperazione">Cooperazione</a></li>
+      <li><a href="#guadagni">Gestire i guadagni</a></li>
+      <li><a href="#genitori">Il ruolo dei genitori</a></li>
+    </ul>
+  </nav>
+
+  <div class="tre">
+    <div style="--tono:var(--fagiolo)">
+      <h3>Responsabilità</h3>
+      <dl>
+        <dt>Che cosa impara il ragazzo</dt><dd>Mantenere un impegno e dire la verità</dd>
+        <dt>Come lo fa in BeBeans</dt><dd>Compiti con orario, serie di giornate perfette, cartellini</dd>
+      </dl>
+    </div>
+    <div style="--tono:var(--scuola)">
+      <h3>Cooperazione</h3>
+      <dl>
+        <dt>Che cosa impara il ragazzo</dt><dd>Aiutare ed essere aiutato, raggiungere un obiettivo insieme</dd>
+        <dt>Come lo fa in BeBeans</dt><dd>Scambi tra fratelli, compiti di squadra, proposte</dd>
+      </dl>
+    </div>
+    <div style="--tono:var(--stella)">
+      <h3>Gestione dei guadagni</h3>
+      <dl>
+        <dt>Che cosa impara il ragazzo</dt><dd>Scegliere tra un piacere subito e un obiettivo più grande</dd>
+        <dt>Come lo fa in BeBeans</dt><dd>Stelle come risparmi, negozio dei premi, obiettivi a lungo termine</dd>
+      </dl>
+    </div>
+  </div>
+
+  <article>
+
+    <section class="capitolo" id="responsabilita" style="--tono:var(--fagiolo)">
+      <h2>Responsabilità: mantenere un impegno, dire la verità</h2>
+      <p>Essere responsabili vuol dire fare ciò che ci si è impegnati a fare, anche quando nessuno controlla, e rispondere delle proprie scelte.</p>
+      <ul class="punti">
+        <li><strong>La costanza conta più del singolo gesto.</strong><span>Ogni compito vale qualche stella, ma il premio più grande arriva con la giornata perfetta e con la serie di giornate di fila. Un giorno saltato azzera la serie: le abitudini si costruiscono un giorno alla volta.</span></li>
+        <li><strong>Fiducia prima, controllo dopo.</strong><span>Le stelle arrivano subito alla spunta, senza aspettare l'approvazione di un genitore. Il ragazzo viene trattato come una persona di cui ci si fida; il controllo arriva dopo.</span></li>
+        <li><strong>Dire la verità conviene sempre.</strong><span>Un compito non fatto costa una stella. Dichiarare fatto un compito che non lo è costa molto di più: le stelle restituite, il doppio del valore, la serie e un cartellino giallo. Sbagliare si può, mentire no.</span></li>
+        <li><strong>Si può sempre rimediare.</strong><span>Anche dopo un cartellino rosso il gioco continua: i compiti di recupero servono a tornare in pari, non a umiliare. Gli errori hanno conseguenze, ma non sono definitivi.</span></li>
+      </ul>
+    </section>
+
+    <section class="capitolo" id="cooperazione" style="--tono:var(--scuola)">
+      <h2>Cooperazione: insieme si arriva più lontano</h2>
+      <p>In una famiglia nessuno ce la fa da solo: ci si dà una mano e si condividono gli obiettivi.</p>
+      <ul class="punti">
+        <li><strong>Aiutarsi a vicenda.</strong><span>Un fratello può chiedere all'altro di fare un suo compito. Chi accetta prende le stelle del compito più una stella di "favore": aiutare conviene. Chi chiede rinuncia alle stelle: chiedere aiuto è legittimo, ma ha un prezzo, e si impara a non abusarne.</span></li>
+        <li><strong>Un obiettivo comune.</strong><span>Nei compiti di squadra, come riordinare il salotto, le stelle arrivano a tutti solo quando tutti hanno confermato di averlo fatto insieme. Si vince insieme e si risponde insieme.</span></li>
+        <li><strong>L'iniziativa personale.</strong><span>Chi fa qualcosa di utile senza che nessuno glielo chieda può proporlo, e i genitori decidono quante stelle vale. Il contributo spontaneo viene visto e apprezzato.</span></li>
+      </ul>
+    </section>
+
+    <section class="capitolo" id="guadagni" style="--tono:var(--stella)">
+      <h2>Gestire i propri guadagni: spendo subito o risparmio?</h2>
+      <p>Le stelle sono un piccolo stipendio guadagnato con il proprio impegno. Come in una vera economia, ogni ragazzo decide come usarle, e ogni scelta ha un costo.</p>
+      <ul class="punti">
+        <li><strong>Spendere subito.</strong><span>Il negozio offre premi piccoli e vicini, come un quarto d'ora in più di tablet o scegliere il film della sera. Danno una soddisfazione immediata, ma il saldo torna a zero.</span></li>
+        <li><strong>Risparmiare per un obiettivo.</strong><span>Ci sono anche premi grandi e lontani, come un libro a scelta o un contributo per la bicicletta nuova. Per arrivarci servono settimane di costanza e la capacità di dire "non ancora" ai premi piccoli.</span></li>
+        <li><strong>Un valore concreto.</strong><span>Ogni premio ha un prezzo in stelle e le stelle non scadono. I ragazzi possono confrontare premi diversi e capire quanto impegno c'è dietro ogni cosa.</span></li>
+        <li><strong>Tenere i conti.</strong><span>Il saldo, le stelle prenotate per una richiesta in attesa e l'estratto conto con gli ultimi movimenti abituano a sapere sempre quanto si ha, da dove viene e dove è andato.</span></li>
+      </ul>
+      <p class="chiusa">Non c'è una scelta giusta: a volte è bello concedersi subito un premio. L'obiettivo è che la scelta sia consapevole.</p>
+    </section>
+
+    <section class="capitolo" id="genitori" style="--tono:var(--personali)">
+      <h2>Il ruolo dei genitori</h2>
+      <p>BeBeans dà le regole, ma il valore educativo lo date voi: l'app è lo strumento, l'esempio resta vostro.</p>
+      <ul class="punti">
+        <li><strong>Le regole sono vostre.</strong><span>Valore delle stelle, bonus, penalità, premi e orari si possono cambiare. Adattateli all'età e al carattere dei vostri figli.</span></li>
+        <li><strong>Siate coerenti.</strong><span>Un premio promesso va mantenuto, una regola vale per tutti. La fiducia dei ragazzi nel gioco nasce da qui.</span></li>
+        <li><strong>Controllate con leggerezza.</strong><span>Confermare richiede un tocco; una contestazione è una conseguenza, non una punizione. Prima di toccare la spunta, parlatene.</span></li>
+        <li><strong>Celebrate i traguardi.</strong><span>Una serie lunga, un obiettivo di risparmio raggiunto, un compito di squadra ben fatto meritano due parole in più a cena.</span></li>
+        <li><strong>Ascoltate.</strong><span>Se un ragazzo si scoraggia, rivedete insieme compiti e premi: il gioco deve motivare, non pesare.</span></li>
+      </ul>
+    </section>
+
+  </article>
+
+  <section class="invito">
+    <h2>Vi ritrovate in questa idea?</h2>
+    <p>Stiamo aprendo la prova a poche famiglie. Scriveteci e vi mandiamo l'invito appena c'è posto.</p>
+    <a class="btn" id="mail-famiglie" href="mailto:bebeans.app@gmail.com?subject=Accesso%20anticipato%20BeBeans">Richiedi l'accesso anticipato</a>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="index.html"><svg width="28" height="28"><use href="#i-fagiolo"/></svg>BeBeans</a>
+    <nav aria-label="Link">
+      <a href="index.html">Home</a>
+      <a href="mailto:bebeans.app@gmail.com?subject=Informazioni%20su%20BeBeans">Contatti</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+    <p>© 2026 BeBeans</p>
+  </div>
+</footer>
+
+</body>
+</html>
