@@ -49,10 +49,10 @@
   .barra .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
   .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 1.5rem Fredoka,sans-serif}
   .logo svg{width:34px;height:34px}
-  .menu{display:none;gap:24px;font-weight:500}
-  .menu a{text-decoration:none;color:var(--grigio)}
+  .menu{display:none;gap:20px;font-weight:500}
+  .menu a{text-decoration:none;color:var(--grigio);white-space:nowrap}
   .menu a:hover{color:var(--notte)}
-  @media(min-width:880px){.menu{display:flex}}
+  @media(min-width:1120px){.menu{display:flex}}
 
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;border-radius:999px;font:600 1rem Figtree,sans-serif;text-decoration:none;border:0;cursor:pointer}
   .btn-stella{background:var(--stella);color:var(--notte);box-shadow:0 3px 0 #D9A21A}
@@ -185,6 +185,33 @@
   .faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
   .faq details p{padding:0 22px 20px;color:var(--grigio)}
 
+  /* Commenti e idee */
+  .voce{background:var(--carta);border-top:1px solid var(--bordo);border-bottom:1px solid var(--bordo)}
+  .voce .doppia{align-items:start}
+  .voce .intro p + p{margin-top:12px}
+  .modulo{background:var(--fondo);border-radius:var(--r-grande);padding:28px;display:grid;gap:18px}
+  .scelta{position:relative;display:inline-flex;background:var(--carta);border:1px solid var(--bordo);border-radius:999px;padding:4px;gap:4px;width:max-content;max-width:100%}
+  .scelta input{position:absolute;left:0;top:0;width:1px;height:1px;margin:0;opacity:0;pointer-events:none}
+  .scelta label{padding:8px 18px;border-radius:999px;font-weight:600;cursor:pointer;color:var(--grigio)}
+  .scelta input:checked + label{background:var(--notte);color:#fff}
+  .scelta input:focus-visible + label{outline:3px solid var(--scuola);outline-offset:2px}
+  .campo{display:grid;gap:6px}
+  .campo > label,.campo legend{font-weight:600;font-size:.95rem;padding:0}
+  .campo .aiuto{font-size:.85rem;color:var(--grigio)}
+  .campo input,.campo select,.campo textarea{font:inherit;color:var(--notte);background:var(--carta);border:1.5px solid var(--bordo);border-radius:var(--r-piccolo);padding:12px 14px;width:100%}
+  .campo textarea{min-height:140px;resize:vertical}
+  .campo input:focus,.campo select:focus,.campo textarea:focus{outline:none;border-color:var(--scuola);box-shadow:0 0 0 3px rgba(58,141,222,.18)}
+  .riga{display:grid;gap:18px}
+  @media(min-width:560px){.riga{grid-template-columns:1fr 1fr}}
+  .conta{font-size:.82rem;color:var(--grigio);text-align:right}
+  .consenso{display:flex;gap:10px;align-items:flex-start;font-size:.92rem;color:var(--grigio)}
+  .consenso input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--notte)}
+  .trappola{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .esito{border-radius:var(--r-medio);padding:14px 16px;font-weight:500}
+  .esito.ok{background:#E7F6EE}
+  .esito.errore{background:#FDE8E8}
+  .btn[disabled]{opacity:.6;cursor:wait}
+
   /* Accesso anticipato */
   .accesso{text-align:center}
   .accesso .scatola{background:var(--stella);border-radius:40px;padding:56px 24px}
@@ -223,8 +250,9 @@
       <a href="#genitori">Per i genitori</a>
       <a href="#commercianti">Per i negozi</a>
       <a href="#domande">Domande</a>
+      <a href="#la-tua-idea">La tua idea</a>
     </nav>
-    <a class="btn btn-stella btn-piccolo" href="#accesso">Voglio provarla</a>
+    <a class="btn btn-stella btn-piccolo" style="white-space:nowrap" href="#accesso">Voglio provarla</a>
   </div>
 </header>
 
@@ -497,6 +525,66 @@
     </div>
   </section>
 
+  <!-- COMMENTI E IDEE -->
+  <section id="la-tua-idea" class="voce">
+    <div class="wrap doppia">
+      <div class="intro">
+        <h2>Hai un'idea? Raccontacela</h2>
+        <p>BeBeans cresce insieme alle famiglie che la usano. Un compito che manca, un premio che funziona a casa vostra, una regola da cambiare: ogni proposta viene letta.</p>
+        <p>Se ci lasci la tua email possiamo risponderti; se preferisci, puoi scrivere senza.</p>
+      </div>
+
+      <form class="modulo" id="modulo-voce" novalidate>
+        <div class="campo">
+          <span class="aiuto" id="tipo-etichetta">Che cosa vuoi lasciarci?</span>
+          <div class="scelta" role="radiogroup" aria-labelledby="tipo-etichetta">
+            <input type="radio" name="type" id="tipo-idea" value="idea" checked><label for="tipo-idea">Un'idea</label>
+            <input type="radio" name="type" id="tipo-commento" value="commento"><label for="tipo-commento">Un commento</label>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="voce-testo" id="testo-etichetta">La tua idea</label>
+          <textarea id="voce-testo" name="message" minlength="10" maxlength="2000" required aria-describedby="voce-conta"></textarea>
+          <span class="conta" id="voce-conta">0 / 2000</span>
+        </div>
+
+        <div class="riga">
+          <div class="campo">
+            <label for="voce-ruolo">Chi sei</label>
+            <select id="voce-ruolo" name="role">
+              <option value="genitore">Un genitore</option>
+              <option value="commerciante">Un negozio o un'attività</option>
+              <option value="altro">Altro</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="voce-nome">Nome <span class="aiuto">(facoltativo)</span></label>
+            <input id="voce-nome" name="name" maxlength="60" autocomplete="given-name">
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="voce-email">Email <span class="aiuto">(facoltativa, solo se vuoi una risposta)</span></label>
+          <input id="voce-email" name="email" type="email" maxlength="120" autocomplete="email">
+        </div>
+
+        <div class="trappola" aria-hidden="true">
+          <label for="voce-sito">Non compilare</label><input id="voce-sito" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <label class="consenso">
+          <input type="checkbox" id="voce-consenso" required>
+          <span>Ho letto l'<a href="privacy.html">informativa privacy</a> e acconsento all'uso di quello che scrivo per migliorare BeBeans. Se sei un ragazzo, scrivi insieme a un genitore.</span>
+        </label>
+
+        <div class="esito" id="voce-esito" role="status" hidden></div>
+
+        <button class="btn btn-stella" type="submit" id="voce-invia">Invia l'idea</button>
+      </form>
+    </div>
+  </section>
+
   <!-- ACCESSO ANTICIPATO -->
   <section id="accesso" class="accesso">
     <div class="wrap">
@@ -554,6 +642,87 @@
       timer = setTimeout(() => festa.classList.remove("attiva"), 3800);
     }
   }
+
+  // Commenti e idee: salvati su Firebase (raccolta "feedback"), librerie caricate solo all'invio
+  const FIREBASE_CONFIG = {
+    apiKey: "AIzaSyBDHYSOJjyexvC1rw8a9ZCfuu-BhLKtDLI",
+    authDomain: "duty-scheduler-bdd9e.firebaseapp.com",
+    projectId: "duty-scheduler-bdd9e",
+    appId: "1:106420224624:web:7e9647dac88083247feab5"
+  };
+  const APP_CHECK_SITE_KEY = "6LcejgEuAAAAAHC2JQe9igZ9uFtPK69Xz5IiJ05d";
+  const FB = "https://www.gstatic.com/firebasejs/12.9.0/";
+  let dbPronto;
+  function apriDatabase(){
+    if (!dbPronto) dbPronto = (async () => {
+      const [{ initializeApp }, { initializeAppCheck, ReCaptchaEnterpriseProvider }, fs] = await Promise.all([
+        import(FB + "firebase-app.js"), import(FB + "firebase-app-check.js"), import(FB + "firebase-firestore.js")
+      ]);
+      const app = initializeApp(FIREBASE_CONFIG, "sito");
+      initializeAppCheck(app, { provider: new ReCaptchaEnterpriseProvider(APP_CHECK_SITE_KEY), isTokenAutoRefreshEnabled: false });
+      return { db: fs.getFirestore(app), fs };
+    })();
+    dbPronto.catch(() => { dbPronto = null; });
+    return dbPronto;
+  }
+
+  const modulo = document.getElementById("modulo-voce");
+  const testo = document.getElementById("voce-testo");
+  const conta = document.getElementById("voce-conta");
+  const esito = document.getElementById("voce-esito");
+  const invia = document.getElementById("voce-invia");
+  const etichettaTesto = document.getElementById("testo-etichetta");
+
+  const tipo = () => modulo.querySelector('input[name="type"]:checked').value;
+  function aggiornaTipo(){
+    const idea = tipo() === "idea";
+    etichettaTesto.textContent = idea ? "La tua idea" : "Il tuo commento";
+    invia.textContent = idea ? "Invia l'idea" : "Invia il commento";
+  }
+  modulo.querySelectorAll('input[name="type"]').forEach(r => r.addEventListener("change", aggiornaTipo));
+  testo.addEventListener("input", () => { conta.textContent = `${testo.value.length} / 2000`; });
+  // prepara Firebase appena l'utente inizia a scrivere, così l'invio è immediato
+  testo.addEventListener("focus", () => { apriDatabase().catch(() => {}); }, { once: true });
+
+  function mostra(tipoEsito, messaggio){
+    esito.hidden = false;
+    esito.className = "esito " + tipoEsito;
+    esito.textContent = messaggio;
+  }
+
+  modulo.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const messaggio = testo.value.trim();
+    const nome = modulo.elements.namedItem("name").value.trim();
+    const email = modulo.elements.namedItem("email").value.trim();
+    if (messaggio.length < 10){ mostra("errore", "Scrivi almeno qualche parola in più (minimo 10 caratteri)."); testo.focus(); return; }
+    if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ mostra("errore", "L'email non sembra corretta: controllala oppure lascia il campo vuoto."); modulo.elements.namedItem("email").focus(); return; }
+    if (!document.getElementById("voce-consenso").checked){ mostra("errore", "Per inviare serve il consenso all'informativa privacy."); return; }
+
+    const grazie = tipo() === "idea" ? "Grazie! La tua idea è arrivata e la leggeremo con attenzione." : "Grazie! Il tuo commento è arrivato.";
+    // campo trappola compilato: è un programma automatico, fingiamo che sia andato tutto bene
+    if (modulo.elements.namedItem("website").value){ modulo.reset(); aggiornaTipo(); mostra("ok", grazie); return; }
+
+    invia.disabled = true;
+    const etichetta = invia.textContent;
+    invia.textContent = "Invio in corso…";
+    try {
+      const { db, fs } = await apriDatabase();
+      const dati = { type: tipo(), role: modulo.elements.namedItem("role").value, message: messaggio, consent: true,
+                     source: "bebeans.it", createdAt: fs.serverTimestamp() };
+      if (nome) dati.name = nome;
+      if (email) dati.email = email;
+      await fs.addDoc(fs.collection(db, "feedback"), dati);
+      modulo.reset(); conta.textContent = "0 / 2000"; aggiornaTipo();
+      mostra("ok", grazie + (email ? " Ti risponderemo all'indirizzo che ci hai lasciato." : ""));
+    } catch (err) {
+      console.error(err);
+      mostra("errore", `Non siamo riusciti a inviare il messaggio. Controlla la connessione e riprova, oppure scrivici a ${EMAIL}.`);
+    } finally {
+      invia.disabled = false;
+      if (invia.textContent === "Invio in corso…") invia.textContent = etichetta;
+    }
+  });
 
   document.querySelectorAll(".compito").forEach(b => {
     b.addEventListener("click", () => {
